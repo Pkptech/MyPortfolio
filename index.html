@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pankaj Gulbeer - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">PG</div>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="greeting">Hello, I'm</span>
+                    <h1 data-text="Pankaj Gulbeer">Pankaj Gulbeer</h1>
+                    <p>A passionate developer who loves creating amazing digital experiences.</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="cta-button">
+                            <span class="button-text">View My Work</span>
+                            <span class="button-icon">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="code-content">
+                        <span class="code-line"><span class="highlight">const</span> developer = {</span>
+                        <span class="code-line">  name: <span class="highlight">'Pankaj Gulbeer'</span>,</span>
+                        <span class="code-line">  skills: [<span class="highlight">'Web'</span>, <span class="highlight">'Android'</span>, <span class="highlight">'Video Editing'</span>],</span>
+                        <span class="code-line">  passion: <span class="highlight">'Creating Digital Experiences'</span></span>
+                        <span class="code-line">};</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="skill-title">Web Development</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>HTML5, CSS3, JavaScript</li>
+                        <li>React.js, Node.js</li>
+                        <li>Responsive Design</li>
+                        <li>UI/UX Design Principles</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fab fa-android"></i>
+                        </div>
+                        <h3 class="skill-title">Android Development</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Java, Kotlin</li>
+                        <li>Android SDK</li>
+                        <li>Material Design</li>
+                        <li>App Publishing</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="skill-title">Video Editing</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Adobe Premiere Pro</li>
+                        <li>After Effects</li>
+                        <li>Motion Graphics</li>
+                        <li>Color Grading</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="images/project1.jpg" alt="E-Commerce Platform" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">A full-stack e-commerce platform with real-time inventory management and secure payment integration.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span>View Code</span>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>Live Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/project2.jpg" alt="Fitness Tracking App" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Fitness Tracking App</h3>
+                        <p class="project-description">Android app for tracking workouts, nutrition, and progress with customizable workout plans.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Kotlin</span>
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">Firebase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span>View Code</span>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-google-play"></i>
+                                <span>Play Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/project3.jpg" alt="Creative Video Series" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Creative Video Series</h3>
+                        <p class="project-description">A series of promotional videos with custom motion graphics and stunning visual effects.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Premiere Pro</span>
+                            <span class="project-tag">After Effects</span>
+                            <span class="project-tag">Motion Graphics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-youtube"></i>
+                                <span>Watch Videos</span>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-images"></i>
+                                <span>Portfolio</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

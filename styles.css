@@ -1,0 +1,731 @@
+:root {
+    --color-bg: #0a0a0a;
+    --color-primary: #00ff88;
+    --color-secondary: #ff3366;
+    --color-text: #e0e0e0;
+    --color-text-dark: #a0a0a0;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-primary);
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.greeting {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-text h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    animation: glitch 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.hero-text h1::before,
+.hero-text h1::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-text h1::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--color-secondary);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.hero-text h1::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--color-primary);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim2 2.5s infinite linear alternate-reverse;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+    animation-delay: 1s;
+}
+
+.hero-cta {
+    margin-top: 2rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--color-primary);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.cta-button:hover {
+    color: var(--color-bg);
+}
+
+.cta-button:hover::before {
+    width: 100%;
+}
+
+.button-icon {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .button-icon {
+    transform: translateX(5px);
+}
+
+/* Code Window */
+.code-window {
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.window-header {
+    background: #2a2a2a;
+    padding: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.code-content {
+    padding: 2rem;
+    font-family: 'Roboto Mono', monospace;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+.code-line {
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.highlight {
+    color: var(--color-primary);
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 255, 136, 0.05));
+}
+
+.skills-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.skill-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-bg);
+}
+
+.skill-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.skill-list {
+    list-style: none;
+}
+
+.skill-list li {
+    margin: 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-list li::before {
+    content: '→';
+    color: var(--color-primary);
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 6rem 0;
+}
+
+.projects-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.project-description {
+    color: var(--color-text-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tag {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--color-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    color: var(--color-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.project-link:hover {
+    color: var(--color-primary);
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 6rem 0;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--color-text-dark);
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group label {
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    color: var(--color-text-dark);
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -20px;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.submit-button {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text {
+        align-items: center;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .code-content {
+        padding: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .skills-container,
+    .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(42px, 9999px, 44px, 0);
+        transform: skew(0.15deg);
+    }
+    5% {
+        clip: rect(12px, 9999px, 59px, 0);
+        transform: skew(0.3deg);
+    }
+    10% {
+        clip: rect(48px, 9999px, 29px, 0);
+        transform: skew(0.45deg);
+    }
+    15% {
+        clip: rect(42px, 9999px, 73px, 0);
+        transform: skew(0.2deg);
+    }
+    20% {
+        clip: rect(63px, 9999px, 27px, 0);
+        transform: skew(0.35deg);
+    }
+    25% {
+        clip: rect(34px, 9999px, 55px, 0);
+        transform: skew(0.4deg);
+    }
+    30% {
+        clip: rect(86px, 9999px, 73px, 0);
+        transform: skew(0.25deg);
+    }
+    35% {
+        clip: rect(20px, 9999px, 78px, 0);
+        transform: skew(0.3deg);
+    }
+    40% {
+        clip: rect(26px, 9999px, 60px, 0);
+        transform: skew(0.15deg);
+    }
+    45% {
+        clip: rect(25px, 9999px, 66px, 0);
+        transform: skew(0.5deg);
+    }
+    50% {
+        clip: rect(57px, 9999px, 98px, 0);
+        transform: skew(0.45deg);
+    }
+    55% {
+        clip: rect(5px, 9999px, 46px, 0);
+        transform: skew(0.35deg);
+    }
+    60% {
+        clip: rect(82px, 9999px, 31px, 0);
+        transform: skew(0.4deg);
+    }
+    65% {
+        clip: rect(54px, 9999px, 27px, 0);
+        transform: skew(0.25deg);
+    }
+    70% {
+        clip: rect(28px, 9999px, 99px, 0);
+        transform: skew(0.3deg);
+    }
+    75% {
+        clip: rect(45px, 9999px, 69px, 0);
+        transform: skew(0.15deg);
+    }
+    80% {
+        clip: rect(23px, 9999px, 85px, 0);
+        transform: skew(0.5deg);
+    }
+    85% {
+        clip: rect(54px, 9999px, 84px, 0);
+        transform: skew(0.45deg);
+    }
+    90% {
+        clip: rect(45px, 9999px, 47px, 0);
+        transform: skew(0.35deg);
+    }
+    95% {
+        clip: rect(37px, 9999px, 20px, 0);
+        transform: skew(0.4deg);
+    }
+    100% {
+        clip: rect(4px, 9999px, 91px, 0);
+        transform: skew(0.25deg);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(65px, 9999px, 100px, 0);
+        transform: skew(0.2deg);
+    }
+    5% {
+        clip: rect(52px, 9999px, 74px, 0);
+        transform: skew(0.3deg);
+    }
+    10% {
+        clip: rect(79px, 9999px, 85px, 0);
+        transform: skew(0.15deg);
+    }
+    15% {
+        clip: rect(75px, 9999px, 5px, 0);
+        transform: skew(0.4deg);
+    }
+    20% {
+        clip: rect(67px, 9999px, 48px, 0);
+        transform: skew(0.35deg);
+    }
+    25% {
+        clip: rect(63px, 9999px, 92px, 0);
+        transform: skew(0.25deg);
+    }
+    30% {
+        clip: rect(44px, 9999px, 96px, 0);
+        transform: skew(0.3deg);
+    }
+    35% {
+        clip: rect(3px, 9999px, 72px, 0);
+        transform: skew(0.15deg);
+    }
+    40% {
+        clip: rect(25px, 9999px, 45px, 0);
+        transform: skew(0.5deg);
+    }
+    45% {
+        clip: rect(56px, 9999px, 83px, 0);
+        transform: skew(0.45deg);
+    }
+    50% {
+        clip: rect(82px, 9999px, 31px, 0);
+        transform: skew(0.35deg);
+    }
+    55% {
+        clip: rect(33px, 9999px, 98px, 0);
+        transform: skew(0.4deg);
+    }
+    60% {
+        clip: rect(27px, 9999px, 52px, 0);
+        transform: skew(0.25deg);
+    }
+    65% {
+        clip: rect(85px, 9999px, 64px, 0);
+        transform: skew(0.3deg);
+    }
+    70% {
+        clip: rect(93px, 9999px, 76px, 0);
+        transform: skew(0.15deg);
+    }
+    75% {
+        clip: rect(75px, 9999px, 89px, 0);
+        transform: skew(0.5deg);
+    }
+    80% {
+        clip: rect(48px, 9999px, 42px, 0);
+        transform: skew(0.45deg);
+    }
+    85% {
+        clip: rect(11px, 9999px, 99px, 0);
+        transform: skew(0.35deg);
+    }
+    90% {
+        clip: rect(66px, 9999px, 24px, 0);
+        transform: skew(0.4deg);
+    }
+    95% {
+        clip: rect(72px, 9999px, 86px, 0);
+        transform: skew(0.25deg);
+    }
+    100% {
+        clip: rect(15px, 9999px, 37px, 0);
+        transform: skew(0.3deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
